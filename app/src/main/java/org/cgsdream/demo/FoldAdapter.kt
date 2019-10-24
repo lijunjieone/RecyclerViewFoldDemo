@@ -165,19 +165,19 @@ class FoldAdapter(private val context: Context) : RecyclerView.Adapter<FoldViewH
 
     // 遍历整个列表，以 index 为中心，锁住/解锁前后所有的数据
     private fun lock(section: Section<Header, Item>) {
-        val lockPrevious = !section.isFold && section.hasBefore && !section.isLoadBeforeError
-        val lockAfter = !section.isFold && section.hasAfter && !section.isLoadAfterError
-        val index = mData.indexOf(section)
-        section.isLocked = false
-        for (i in mData.indices) {
-            if (i < index) {
-                val data = mData[i]
-                data.isLocked = lockPrevious
-            } else if (i > index) {
-                val data = mData[i]
-                data.isLocked = lockAfter
-            }
-        }
+//        val lockPrevious = !section.isFold && section.hasBefore && !section.isLoadBeforeError
+//        val lockAfter = !section.isFold && section.hasAfter && !section.isLoadAfterError
+//        val index = mData.indexOf(section)
+//        section.isLocked = false
+//        for (i in mData.indices) {
+//            if (i < index) {
+//                val data = mData[i]
+//                data.isLocked = lockPrevious
+//            } else if (i > index) {
+//                val data = mData[i]
+//                data.isLocked = lockAfter
+//            }
+//        }
     }
 
     fun getRelativeFixedItemPosition(pos: Int): Int {
@@ -219,15 +219,15 @@ class FoldAdapter(private val context: Context) : RecyclerView.Adapter<FoldViewH
         }
     }
 
-    override fun onViewAttachedToWindow(holder: FoldViewHolder) {
-        if (holder.itemView is SectionLoadingView) {
-            val layout = holder.itemView
-            if (!layout.isLoadError()) {
-                val section = mData[mSectionIndex.get(holder.adapterPosition)]
-                actionListener?.loadMore(section, layout.isLoadBefore())
-            }
-        }
-    }
+//    override fun onViewAttachedToWindow(holder: FoldViewHolder) {
+//        if (holder.itemView is SectionLoadingView) {
+//            val layout = holder.itemView
+//            if (!layout.isLoadError()) {
+//                val section = mData[mSectionIndex.get(holder.adapterPosition)]
+//                actionListener?.loadMore(section, layout.isLoadBefore())
+//            }
+//        }
+//    }
 
     fun afterBindFixedViewHolder(viewHolder: FoldViewHolder, pos: Int) {
         viewHolder.itemView.setOnClickListener {
@@ -236,7 +236,7 @@ class FoldAdapter(private val context: Context) : RecyclerView.Adapter<FoldViewH
     }
 
     interface ActionListener {
-        fun loadMore(section: Section<Header, Item>, loadBefore: Boolean)
+//        fun loadMore(section: Section<Header, Item>, loadBefore: Boolean)
         fun scrollToPosition(position: Int, underSection: Boolean, forceInScreen: Boolean)
         fun findViewHolderForAdapterPosition(position: Int): RecyclerView.ViewHolder?
         fun requestChildFocus(view: View)

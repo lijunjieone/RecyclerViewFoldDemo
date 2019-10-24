@@ -87,11 +87,11 @@ class DiffCallback<H: Cloneable<H>, T: Cloneable<T>>(private val oldList: List<S
                     itemIndex.append(i, ITEM_INDEX_SECTION_HEADER)
                     i++
                     if (!it.isFold && it.count() > 0) {
-                        if (it.hasBefore) {
-                            sectionIndex.append(i, index)
-                            itemIndex.append(i, ITEM_INDEX_LOAD_BEFORE)
-                            i++
-                        }
+//                        if (it.hasBefore) {
+//                            sectionIndex.append(i, index)
+//                            itemIndex.append(i, ITEM_INDEX_LOAD_BEFORE)
+//                            i++
+//                        }
 
                         for (j in 0 until it.count()) {
                             sectionIndex.append(i, index)
@@ -99,11 +99,11 @@ class DiffCallback<H: Cloneable<H>, T: Cloneable<T>>(private val oldList: List<S
                             i++
                         }
 
-                        if (it.hasAfter) {
-                            sectionIndex.append(i, index)
-                            itemIndex.append(i, ITEM_INDEX_LOAD_AFTER)
-                            i++
-                        }
+//                        if (it.hasAfter) {
+//                            sectionIndex.append(i, index)
+//                            itemIndex.append(i, ITEM_INDEX_LOAD_AFTER)
+//                            i++
+//                        }
                     }
                 }
             }

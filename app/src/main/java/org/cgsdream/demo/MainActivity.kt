@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         initRecyclerView()
 
         mAdapter.setData(loadData())
-        mAdapter.scrollToItem(Item("section 4, item 5"))
+//        mAdapter.scrollToItem(Item("section 4, item 5"))
     }
 
     private fun initTopBar() {
@@ -48,15 +48,15 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerView() {
         mAdapter = FoldAdapter(this)
         mAdapter.actionListener = object : FoldAdapter.ActionListener {
-            override fun loadMore(section: Section<Header, Item>, loadBefore: Boolean) {
-                mRecyclerView.postDelayed({
-                    val list = ArrayList<Item>()
-                    val count = 1 + (Math.random() * 20).toInt()
-                    val hasMore = count <= 10
-                    (0..count).mapTo(list) { Item("${section.header.title} load more $it in ${System.currentTimeMillis()}") }
-                    successLoadMore(section, list, loadBefore, hasMore)
-                },2000)
-            }
+//            override fun loadMore(section: Section<Header, Item>, loadBefore: Boolean) {
+//                mRecyclerView.postDelayed({
+//                    val list = ArrayList<Item>()
+//                    val count = 1 + (Math.random() * 20).toInt()
+//                    val hasMore = count <= 10
+//                    (0..count).mapTo(list) { Item("${section.header.title} load more $it in ${System.currentTimeMillis()}") }
+//                    successLoadMore(section, list, loadBefore, hasMore)
+//                },2000)
+//            }
 
             override fun scrollToPosition(position: Int, underSection: Boolean, forceInScreen: Boolean) {
                 scrollToPos(position, underSection, forceInScreen)
@@ -157,9 +157,9 @@ class MainActivity : AppCompatActivity() {
     private fun loadData(): MutableList<Section<Header, Item>> {
         val data = ArrayList<Section<Header, Item>>()
         for (i in 1..10) {
-            val header = Header("section $i")
+            val header = Header(i,"section $i")
             val items = ArrayList<Item>()
-            (1..10).mapTo(items) { Item("section $i, item $it") }
+            (1..3).mapTo(items) { Item(i,it,"section $i, item $it") }
             val section = Section(header, items, true, true, true, false)
             data.add(section)
         }
